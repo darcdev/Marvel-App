@@ -1,0 +1,51 @@
+:root {
+  /* Primary Color */
+  --ds-primary-color-50: 236 244 248;
+  --ds-primary-color-100: 207 225 235;
+  --ds-primary-color-200: 178 206 223;
+  --ds-primary-color-300: 149 188 210;
+  --ds-primary-color-400: 130 174 201;
+  --ds-primary-color-500: 113 160 193; /* Original **/
+  --ds-primary-color-600: 102 144 173;
+  --ds-primary-color-700: 86 122 147;
+  --ds-primary-color-800: 69 98 120;
+  --ds-primary-color-900: 55 79 97;
+
+  /* Secondary Color */
+
+  --ds-secondary-color-50: 243 245 246;
+  --ds-secondary-color-100: 219 224 226;
+  --ds-secondary-color-200: 183 193 197;
+  --ds-secondary-color-300: 146 161 167;
+  --ds-secondary-color-400: 123 139 145;
+  --ds-secondary-color-500: 73 91 99; /* Color original */
+  --ds-secondary-color-600: 67 81 87;
+  --ds-secondary-color-700: 54 64 68;
+  --ds-secondary-color-800: 41 47 49;
+  --ds-secondary-color-900: 29 33 36;
+
+  /* Accent Color */
+
+  --ds-accent-color-50: 250 245 234;
+  --ds-accent-color-100: 246 236 217;
+  --ds-accent-color-200: 241 227 200;
+  --ds-accent-color-300: 236 218 183;
+  --ds-accent-color-400: 234 212 168; /* Original */
+  --ds-accent-color-500: 209 191 151;
+  --ds-accent-color-600: 184 168 134;
+  --ds-accent-color-700: 160 146 117;
+  --ds-accent-color-800: 135 123 101;
+  --ds-accent-color-900: 111 101 84;
+
+  /* Gray Color */
+  --ds-gray-color-50: 245 245 245;
+  --ds-gray-color-100: 230 230 230;
+  --ds-gray-color-200: 200 200 200;
+  --ds-gray-color-300: 170 170 170;
+  --ds-gray-color-400: 140 140 140;
+  --ds-gray-color-500: 105 105 105; /* Original */
+  --ds-gray-color-600: 90 90 90;
+  --ds-gray-color-700: 70 70 70;
+  --ds-gray-color-800: 50 50 50;
+  --ds-gray-color-900: 30 30 30;
+}

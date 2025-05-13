@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@import "./app/presentation/theme/index.css";
+@import "./app/presentation/theme/tailwindcss/theme.css";
+
+body {
+  font-family: "Sansation", sans-serif;
+}
