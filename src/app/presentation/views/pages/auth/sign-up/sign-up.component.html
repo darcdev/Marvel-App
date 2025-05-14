@@ -1,0 +1,90 @@
+<div class="login-container">
+  <div class="login-image-side hidden lg:block">
+    <div class="marvel-overlay">
+      <div class="marvel-logo">
+        <img src="/iron-marvel.png" alt="Marvel Logo" />
+      </div>
+    </div>
+  </div>
+
+  <div class="login-form-side">
+    <div class="login-form-container">
+      <div class="login-logo">
+        <app-logo-marvel-fans textColor="#000" />
+      </div>
+
+      <div class="login-form-title">
+        <h3>REGISTRATE</h3>
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="mt-5">
+        <div class="field">
+          <p-floatlabel variant="in">
+            <input
+              pInputText
+              id="over_label"
+              autocomplete="off"
+              [fluid]="true"
+              formControlName="name"
+            />
+            <label for="over_label">Nombre</label>
+          </p-floatlabel>
+        </div>
+
+        <div class="field">
+          <p-floatlabel variant="in">
+            <input
+              pInputText
+              id="over_label"
+              autocomplete="off"
+              [fluid]="true"
+              formControlName="identity"
+            />
+            <label for="over_label">Identidad</label>
+          </p-floatlabel>
+        </div>
+
+        <div class="field">
+          <p-floatlabel variant="in">
+            <input
+              pInputText
+              id="over_label"
+              autocomplete="off"
+              [fluid]="true"
+              formControlName="email"
+            />
+            <label for="over_label">Correo electrónico</label>
+          </p-floatlabel>
+        </div>
+
+        <div class="field">
+          <p-floatlabel variant="in">
+            <p-password
+              formControlName="password"
+              inputId="on_label"
+              [fluid]="true"
+            />
+            <label for="on_label">Contraseña</label>
+          </p-floatlabel>
+        </div>
+
+        <button
+          type="submit"
+          label="REGISTRARSE"
+          pButton
+          class="primary-button w-full"
+        ></button>
+      </form>
+
+      <div class="login-footer">
+        <p>
+          Ya tienes una cuenta?
+          <a href="#" routerLink="/auth/sign-in"
+            ><span class="redirect-sign-up-link">Inicia sesión</span></a
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+  <p-toast />
+</div>
