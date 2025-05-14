@@ -1,0 +1,13 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-text {
+  font-weight: bold;
+  border-top: 4px solid var(--color-white);
+  border-bottom: 4px solid var(--color-white);
+  font-size: 1.5rem !important;
+  text-transform: uppercase;
+}

@@ -1,34 +1,19 @@
 footer {
-  background-color: var(--color-menu-background); /* Fondo negro */
-  color: white; /* Texto blanco */
-  padding: 20px 0; /* Espaciado del footer */
+  background-color: var(--color-menu-background);
+  padding: 20px 0;
   border-top: 4px solid var(--color-primary);
-}
-
-footer .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-footer .logo-text {
-  font-weight: bold;
-  border-top: 4px solid var(--color-white);
-  border-bottom: 4px solid var(--color-white);
-  font-size: 1.5rem !important;
-  text-transform: uppercase;
 }
 
 .footer-container {
   display: flex;
-  flex-direction: column; /* Alineación vertical */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 
 .marvel-logo {
-  width: 150px; /* Ajusta el tamaño del logo */
+  width: 150px;
   margin-bottom: 10px;
 }
 
@@ -42,5 +27,5 @@ footer .logo-text {
 }
 
 .marvel-info:hover {
-  text-decoration: underline; /* Efecto hover */
+  text-decoration: underline;
 }

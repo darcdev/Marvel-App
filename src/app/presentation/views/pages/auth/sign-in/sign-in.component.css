@@ -1,0 +1,139 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.login-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: #f5f5f5;
+}
+
+.login-image-side {
+  flex: 1;
+  position: relative;
+  transform: skew(-5deg);
+  transform-origin: top left;
+  overflow: hidden;
+  background: radial-gradient(
+    circle,
+    rgba(8, 47, 126, 0.6) 0%,
+    rgba(236, 26, 26, 0.4) 100%
+  );
+}
+
+.login-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.login-form-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.marvel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: skew(12deg);
+}
+
+.marvel-logo {
+  width: 70%;
+  max-width: 300px;
+}
+
+.marvel-logo img {
+  width: 100%;
+  transform: scale(1.5);
+}
+
+.login-form-side {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+}
+
+.login-form-container {
+  width: 80%;
+  max-width: 500px;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.field {
+  margin-bottom: 1.5rem;
+}
+
+:host ::ng-deep .p-password input {
+  width: 100%;
+}
+
+.login-footer {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.login-footer a {
+  color: #ed1d24;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+.redirect-sign-up-link {
+  color: var(--color-primary);
+  text-decoration: underline;
+  font-weight: 500;
+  font-size: 1rem !important;
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+  }
+
+  .login-image-side {
+    height: 30vh;
+  }
+
+  .login-form-container {
+    width: 90%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .marvel-logo img {
+    transform: scale(1.2);
+  }
+}
+
+@media (min-width: 1280px) {
+  .marvel-logo img {
+    transform: scale(1.5);
+  }
+}
+
+@media (min-width: 1600px) {
+  .marvel-logo img {
+    transform: scale(1.6);
+  }
+}

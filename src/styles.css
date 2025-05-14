@@ -8,3 +8,19 @@ body {
     rgba(202, 186, 186, 0.4) 100%
   );
 }
+
+button.primary-button {
+  background-color: var(--color-primary) !important;
+  color: var(--color-white);
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  transform: skew(-12deg) !important;
+  text-transform: uppercase;
+  border-radius: 0 !important;
+}
+
+button.primary-button:hover {
+  transform: skew(-12deg) scale(1.01);
+  cursor: pointer;
+  background-color: var(--color-primary-600) !important;
+}
