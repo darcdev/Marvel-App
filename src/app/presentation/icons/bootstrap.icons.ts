@@ -9,6 +9,7 @@ import {
   bootstrapSearch,
   bootstrapFileEarmarkRichtext,
   bootstrapBookHalf,
+  bootstrapHeartFill,
 } from '@ng-icons/bootstrap-icons';
 
 export const bootstrapIcons = {
@@ -22,4 +23,5 @@ export const bootstrapIcons = {
   bootstrapArrowUpRightCircle,
   bootstrapFileEarmarkRichtext,
   bootstrapBookHalf,
+  bootstrapHeartFill,
 };

@@ -5,6 +5,7 @@ import { BasicLayoutComponent } from '../views/shared/layouts/basic-layout/basic
 import { SignInComponent } from '../views/pages/auth/sign-in/sign-in.component';
 import { SignUpComponent } from '../views/pages/auth/sign-up/sign-up.component';
 import { UserDashboardComponent } from '../views/pages/user-dashboard/user-dashboard.component';
+import { DiscoverComponent } from '../views/pages/discover/discover.component';
 
 export const routes: Routes = [
   {
@@ -13,6 +14,7 @@ export const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       { path: 'user-dashboard', component: UserDashboardComponent },
+      { path: 'discover', component: DiscoverComponent },
     ],
   },
   {

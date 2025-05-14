@@ -1,1 +1,26 @@
-<p>discover works!</p>,
+<div class="discover-commics-container">
+  <section class="section-list-comics">
+    <h3 class="section-title">Lista de Comics</h3>
+    <div class="mb-4">
+      <p-inputgroup>
+        <p-inputgroup-addon>
+          <ng-icon name="bootstrapSearch" size="1.4rem"></ng-icon>
+        </p-inputgroup-addon>
+        <p-floatlabel variant="in">
+          <input pInputText id="over_label" [(ngModel)]="value1" />
+          <label for="over_label">Buscar por nombre de comic</label>
+        </p-floatlabel>
+      </p-inputgroup>
+    </div>
+    <app-list-of-comics />
+    <div class="mt-4">
+      <p-paginator
+        [first]="first"
+        [rows]="rows"
+        [totalRecords]="120"
+        [rowsPerPageOptions]="[10, 20, 30]"
+        (onPageChange)="onPageChange($event)"
+      />
+    </div>
+  </section>
+</div>

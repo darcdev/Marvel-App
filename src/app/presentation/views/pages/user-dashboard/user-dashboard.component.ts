@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ListOfComicsComponent } from './list-of-comics/list-of-comics.component';
 import { PaginatorModule } from 'primeng/paginator';
+import { ListOfComicsComponent } from '../../shared/components/list-of-comics/list-of-comics.component';
 @Component({
   selector: 'app-user-dashboard',
   imports: [ListOfComicsComponent, PaginatorModule],

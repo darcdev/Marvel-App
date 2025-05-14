@@ -1,0 +1,47 @@
+<div class="comic-card">
+  <div class="comic-image-container">
+    <img
+      [src]="comic.thumbnail.path + '.' + comic.thumbnail.extension"
+      [alt]="comic.title"
+      class="comic-image"
+    />
+    <button
+      type="button"
+      class="favorite-button"
+      pButton
+      (click)="addToFavorites(comic)"
+      pTooltip="Agregar a favoritos"
+      tooltipPosition="top"
+    >
+      <ng-icon name="bootstrapHeartFill"></ng-icon>
+    </button>
+  </div>
+  <div class="comic-info">
+    <div class="flex-1">
+      <h4 class="comic-title">{{ comic.title }}</h4>
+      @if (comic.description) {
+      <p class="comic-description">{{ comic.description }}</p>
+      }
+      <div class="comic-details">
+        @if (comic.prices && comic.prices.length > 0) {
+        <span class="comic-price">${{ comic.prices[0].price }}</span>
+        }
+        <span class="comic-pages">{{ comic.pageCount }} páginas</span>
+      </div>
+      @if (comic.creators && comic.creators.items.length > 0) {
+      <div class="comic-creators">
+        <span>By: {{ comic.creators.items[0].name }}</span>
+      </div>
+      }
+    </div>
+    <div>
+      <button
+        type="submit"
+        label="VER DETALLES"
+        pButton
+        class="primary-button w-full"
+        (click)="showDetails(comic)"
+      ></button>
+    </div>
+  </div>
+</div>

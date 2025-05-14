@@ -48,7 +48,8 @@ header .logo-text {
   text-transform: uppercase;
 }
 
-.navigation a::after {
+.navigation a::after,
+.navigation a.active::after {
   content: "";
   display: block;
   width: 100%;
@@ -80,4 +81,8 @@ header .logo-text {
   transform: skew(-12deg) scale(1.01);
   cursor: pointer;
   background-color: var(--color-primary-600);
+}
+
+.navigation a.active::after {
+  transform: scaleX(1);
 }

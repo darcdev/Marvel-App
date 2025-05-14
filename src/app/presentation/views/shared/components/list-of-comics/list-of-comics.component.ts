@@ -1,20 +1,19 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { ComicDetailComponent } from './comic-detail/comic-detail.component';
+import { Component, OnInit } from '@angular/core';
+import { DialogService } from 'primeng/dynamicdialog';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { ComicEntity } from '@app/domain/entities/Comic.entity';
 import { MessageService } from 'primeng/api';
-import { FooterComicDetailComponent } from './comic-detail/footer-comic-detail/footer-comic-detail.component';
+import { ComicCardComponent } from './comic-card/comic-card.component';
 
 @Component({
   selector: 'app-list-of-comics',
   templateUrl: './list-of-comics.component.html',
   styleUrls: ['./list-of-comics.component.css'],
-  imports: [CommonModule, ButtonModule],
+  imports: [CommonModule, ButtonModule, ComicCardComponent],
   providers: [DialogService, MessageService],
 })
-export class ListOfComicsComponent implements OnInit, OnDestroy {
+export class ListOfComicsComponent implements OnInit {
   comics: ComicEntity[] = [
     {
       id: 1,
@@ -152,36 +151,7 @@ export class ListOfComicsComponent implements OnInit, OnDestroy {
     },
   ];
 
-  ref: DynamicDialogRef | undefined;
-
-  constructor(
-    private dialogService: DialogService,
-    public messageService: MessageService
-  ) {}
-
   ngOnInit(): void {}
-
-  ngOnDestroy(): void {
-    if (this.ref) {
-      this.ref.close();
-    }
-  }
-
-  showDetails(comic: ComicEntity): void {
-    this.ref = this.dialogService.open(ComicDetailComponent, {
-      header: 'Comic Details',
-      width: '70%',
-      contentStyle: { overflow: 'auto' },
-      baseZIndex: 10000,
-      maximizable: true,
-      data: {
-        comic: comic,
-      },
-      templates: {
-        footer: FooterComicDetailComponent,
-      },
-    });
-  }
 
   onPageChange(event: any): void {}
 }
