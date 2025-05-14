@@ -12,24 +12,21 @@
         <h4 class="character-name">{{ character.name }}</h4>
         <div class="character-stats">
           <p-tag
-            *ngIf="character.comics > 0"
-            [value]="character.comics + ' Comics'"
+            [value]="(character.comics || 0) + ' Comics'"
             class="comics-tag"
             severity="info"
             [rounded]="true"
           >
           </p-tag>
           <p-tag
-            *ngIf="character.series > 0"
-            [value]="character.series + ' Series'"
+            [value]="(character.series || 0) + ' Series'"
             severity="info"
             class="series-tag"
             [rounded]="true"
           >
           </p-tag>
           <p-tag
-            *ngIf="character.events > 0"
-            [value]="character.events + ' Eventos'"
+            [value]="(character.events || 0) + ' Eventos'"
             severity="info"
             class="events-tag"
             [rounded]="true"

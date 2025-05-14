@@ -14,10 +14,10 @@ export class ListAllCharacterMapperService
       id: character.id,
       name: character.name,
       description: character.description,
-      thumbnail: character.thumbnail,
-      comics: character.comics,
-      series: character.series,
-      events: character.events,
+      thumbnail: character.thumbnail.path + '.' + character.thumbnail.extension,
+      comics: character.comics.available,
+      series: character.series.available,
+      events: character.events.available,
     }));
   }
 }

@@ -1,9 +1,12 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SupabaseService } from '@app/core/services/supabase/supabase.service';
-import { CharactersOperationError } from '@app/core/validations/characters/listAllCharactersError';
+import getMarvelApiUrl from '@app/core/helpers/getMarvelApiUrl';
+import { BaseResponse } from '@app/core/interfaces/marvelResponses/baseResponses';
+import { ListAllCharactersDTO } from '@app/data/dtos/characters/listAllCharactersDTO';
 import { ICharacterRepository } from '@app/data/interfaces/ICharacter.repository';
 import { ListAllCharacterMapperService } from '@app/data/mappers/characters/list-all-characters.mapper';
 import { CharacterEntity } from '@app/domain/entities/Character.entity';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,23 +15,20 @@ export class CharactersRepositoryService extends ICharacterRepository {
   nameTable = 'characters';
 
   constructor(
-    private _supabaseService: SupabaseService,
-    private _listAllCharacterMapper: ListAllCharacterMapperService
+    private _listAllCharacterMapper: ListAllCharacterMapperService,
+    private _httpClient: HttpClient
   ) {
     super();
   }
 
-  async getCharacters(): Promise<CharacterEntity[]> {
-    const { data, error: characterError } = await this._supabaseService.supabase
-      .from(this.nameTable)
-      .select();
-
-    if (!data || characterError) {
-      throw new CharactersOperationError(
-        'listAllCharacters',
-        'Error fetching all characters'
-      );
-    }
-    return this._listAllCharacterMapper.mapTo(data);
+  getCharacters(): Promise<CharacterEntity[]> {
+    return firstValueFrom(
+      this._httpClient.get<BaseResponse<ListAllCharactersDTO>>(
+        getMarvelApiUrl('characters')
+      )
+    ).then((response) => {
+      console.log(response);
+      return this._listAllCharacterMapper.mapTo(response.data.results);
+    });
   }
 }

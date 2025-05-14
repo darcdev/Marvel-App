@@ -3,4 +3,7 @@ export interface Environment {
   supabaseKey: string;
   production: boolean;
   marvelUrl: string;
+  marvelApiKey: string;
+  marvelHash: string;
+  marvelTimestamp: string;
 }

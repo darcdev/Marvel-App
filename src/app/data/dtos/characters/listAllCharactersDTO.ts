@@ -2,8 +2,17 @@ export interface ListAllCharactersDTO {
   id: string;
   name: string;
   description: string;
-  thumbnail: string;
-  comics: number;
-  series: number;
-  events: number;
+  thumbnail: {
+    path: string;
+    extension: string;
+  };
+  comics: {
+    available: number;
+  };
+  series: {
+    available: number;
+  };
+  events: {
+    available: number;
+  };
 }
