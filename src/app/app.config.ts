@@ -5,7 +5,7 @@ import { providePrimeNG } from 'primeng/config';
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import defaultPreset from './presentation/theme/primeng/defaultPreset';
-
+import { getAllProviders } from './core/factories/providers';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -21,5 +21,6 @@ export const appConfig: ApplicationConfig = {
         },
       },
     }),
+    ...getAllProviders,
   ],
 };

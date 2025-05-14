@@ -25,6 +25,7 @@
     "@ng-icons/heroicons": "^31.3.0",
     "@ng-icons/material-icons": "^31.3.0",
     "@primeng/themes": "^19.1.2",
+    "@supabase/supabase-js": "^2.49.4",
     "@tailwindcss/postcss": "^4.0.6",
     "npm": "^11.3.0",
     "postcss": "^8.5.2",
@@ -48,5 +49,10 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.7.2"
+  },
+  "overrides": {
+    "@supabase/supabase-js": {
+      "@supabase/auth-js": "2.61.0"
+    }
   }
 }

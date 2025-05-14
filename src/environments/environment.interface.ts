@@ -1,4 +1,6 @@
 export interface Environment {
-  apiUrl: string;
+  supabaseUrl: string;
+  supabaseKey: string;
   production: boolean;
+  marvelUrl: string;
 }
