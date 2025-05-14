@@ -4,12 +4,16 @@ import { MainLayoutComponent } from '../views/shared/layouts/main-layout/main-la
 import { BasicLayoutComponent } from '../views/shared/layouts/basic-layout/basic-layout.component';
 import { SignInComponent } from '../views/pages/auth/sign-in/sign-in.component';
 import { SignUpComponent } from '../views/pages/auth/sign-up/sign-up.component';
+import { UserDashboardComponent } from '../views/pages/user-dashboard/user-dashboard.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
-    children: [{ path: '', component: HomeComponent }],
+    children: [
+      { path: '', component: HomeComponent },
+      { path: 'user-dashboard', component: UserDashboardComponent },
+    ],
   },
   {
     path: 'auth',

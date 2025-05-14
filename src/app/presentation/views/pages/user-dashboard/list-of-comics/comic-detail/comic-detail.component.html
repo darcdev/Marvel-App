@@ -1,0 +1,81 @@
+@if (comic) {
+<div class="comic-detail-container">
+  <div class="comic-header">
+    <h2 class="comic-title">{{ comic.title }}</h2>
+    @if (comic.series) {
+    <div class="comic-series">
+      <span class="series-label">Series:</span> {{ comic.series.name }}
+    </div>
+    }
+  </div>
+
+  <div class="comic-content">
+    <div class="comic-cover">
+      <img
+        [src]="comic.thumbnail.path + '.' + comic.thumbnail.extension"
+        [alt]="comic.title"
+      />
+
+      <div class="comic-stats">
+        @if (comic.prices && comic.prices.length > 0) {
+        <div class="stat-item">
+          <span class="price-label">${{ comic.prices[0].price }}</span>
+        </div>
+        }
+        <div class="stat-item">
+          <ng-icon
+            name="bootstrapBookHalf"
+            class="icon-book"
+            size="24"
+          ></ng-icon>
+          <span>{{ comic.pageCount }} pages</span>
+        </div>
+        <div class="character-stats-facts">
+          <p-tag
+            [value]="1 + ' Comics'"
+            class="comics-tag"
+            severity="info"
+            [rounded]="true"
+          >
+          </p-tag>
+          <p-tag
+            [value]="2 + ' Series'"
+            severity="info"
+            class="series-tag"
+            [rounded]="true"
+          >
+          </p-tag>
+          <p-tag
+            [value]="0 + ' Eventos'"
+            severity="info"
+            class="events-tag"
+            [rounded]="true"
+          >
+          </p-tag>
+        </div>
+      </div>
+    </div>
+
+    <div class="comic-info">
+      @if (comic.description) {
+      <div class="info-section">
+        <h2>Descripción</h2>
+        <p class="comic-description">{{ comic.description }}</p>
+      </div>
+      } @if (comic.creators && comic.creators.items.length > 0) {
+      <div class="info-section creators-section">
+        <h2>Equipo Creativo</h2>
+        <div class="creators-grid">
+          @for (creator of comic.creators.items; track creator.name) {
+          <div class="creator-card">
+            <div class="creator-role">{{ creator.role }}</div>
+            <div class="creator-name">{{ creator.name }}</div>
+          </div>
+          }
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>
+}

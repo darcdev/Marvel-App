@@ -1,0 +1,162 @@
+:host {
+  display: block;
+}
+
+.comic-header {
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+}
+
+.comic-title {
+  margin: 0 0 8px 0;
+  font-weight: 700;
+  color: #202020;
+}
+
+.comic-series {
+  font-size: 18px;
+  color: #555;
+}
+
+.series-label {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.comic-content {
+  display: flex;
+  gap: 30px;
+}
+
+.comic-cover {
+  flex: 0 0 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.comic-cover img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  max-height: 500px;
+  object-fit: cover;
+}
+
+.comic-stats {
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.price-label {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+}
+
+.stat-item i {
+  color: var(--color-primary);
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+}
+
+.comic-info {
+  flex: 1;
+}
+
+.info-section {
+  margin-bottom: 30px;
+}
+
+.info-section h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  color: var(--color-marvel-blue);
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+.comic-description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #444;
+}
+
+.creators-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.creator-card {
+  background-color: #f8f8f8;
+  border-radius: 6px;
+  padding: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.creator-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.creator-role {
+  font-size: 14px;
+  color: var(--color-primary);
+  text-transform: capitalize;
+  margin-bottom: 4px;
+}
+
+.creator-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.character-stats-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+:host ::ng-deep .p-tag.comics-tag.p-tag-info {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+:host ::ng-deep .p-tag.series-tag.p-tag-info {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+:host ::ng-deep .p-tag.events-tag.p-tag-info {
+  background-color: var(--color-marvel-blue);
+  color: var(--color-white);
+}
+
+@media (max-width: 768px) {
+  .comic-content {
+    flex-direction: column;
+  }
+
+  .comic-cover {
+    flex: 0 0 auto;
+  }
+
+  .creators-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}

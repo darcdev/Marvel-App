@@ -24,3 +24,18 @@ button.primary-button:hover {
   cursor: pointer;
   background-color: var(--color-primary-600) !important;
 }
+
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 2px;
+  background-color: var(--color-primary);
+}

@@ -6,6 +6,9 @@ import {
   bootstrapCardChecklist,
   bootstrapArrowRightCircle,
   bootstrapArrowUpRightCircle,
+  bootstrapSearch,
+  bootstrapFileEarmarkRichtext,
+  bootstrapBookHalf,
 } from '@ng-icons/bootstrap-icons';
 
 export const bootstrapIcons = {
@@ -15,5 +18,8 @@ export const bootstrapIcons = {
   bootstrapFolderPlus,
   bootstrapCardChecklist,
   bootstrapArrowRightCircle,
+  bootstrapSearch,
   bootstrapArrowUpRightCircle,
+  bootstrapFileEarmarkRichtext,
+  bootstrapBookHalf,
 };
