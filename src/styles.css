@@ -1,8 +1,10 @@
-@import "tailwindcss";
-
 @import "./app/presentation/theme/index.css";
-@import "./app/presentation/theme/tailwindcss/theme.css";
 
 body {
   font-family: "Sansation", sans-serif;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(202, 186, 186, 0.4) 100%
+  );
 }

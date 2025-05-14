@@ -1,0 +1,98 @@
+.characters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.character-card {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.character-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+}
+
+.character-image-container {
+  height: 200px;
+  overflow: hidden;
+}
+
+.character-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.character-card:hover .character-image {
+  transform: scale(1.1);
+}
+
+.character-info {
+  padding: 15px;
+}
+
+.character-name {
+  position: relative;
+  font-weight: bold;
+  color: #202020;
+  margin-bottom: 10px;
+}
+
+.character-name:after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 6px;
+  width: 100%;
+  border: solid 2px var(--color-primary);
+  border-color: var(--color-primary) transparent transparent transparent;
+  border-radius: 50%;
+}
+.character-description {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-footer {
+  padding: 15px;
+  text-align: center;
+  border-top: 1px solid #eee;
+}
+
+.character-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+:host ::ng-deep .p-tag {
+  font-size: 0.75rem;
+}
+
+:host ::ng-deep .p-tag.comics-tag.p-tag-info {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+:host ::ng-deep .p-tag.series-tag.p-tag-info {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+:host ::ng-deep .p-tag.events-tag.p-tag-info {
+  background-color: var(--color-marvel-blue);
+  color: var(--color-white);
+}

@@ -1,6 +1,6 @@
-:root {
-  --primeng-theme-progressspinner-color-one: var(--color-primary) !important;
-  --primeng-theme-progressspinner-color-two: var(--color-primary) !important;
-  --primeng-theme-progressspinner-color-three: var(--color-primary) !important;
-  --primeng-theme-progressspinner-color-four: var(--color-primary) !important;
-}
+@import "tailwindcss";
+
+@import "./tokens.css";
+@import "./primeng/index.css";
+@import "./tailwindcss/theme.css";
+@import "./custom/index.css";

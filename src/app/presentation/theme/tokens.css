@@ -1,51 +1,69 @@
 :root {
-  /* Primary Color */
-  --ds-primary-color-50: 236 244 248;
-  --ds-primary-color-100: 207 225 235;
-  --ds-primary-color-200: 178 206 223;
-  --ds-primary-color-300: 149 188 210;
-  --ds-primary-color-400: 130 174 201;
-  --ds-primary-color-500: 113 160 193; /* Original **/
-  --ds-primary-color-600: 102 144 173;
-  --ds-primary-color-700: 86 122 147;
-  --ds-primary-color-800: 69 98 120;
-  --ds-primary-color-900: 55 79 97;
+  --color-primary-50: #f5cccc;
+  --color-primary-100: #f1a3a1;
+  --color-primary-200: #ed7b77;
+  --color-primary-300: #e5534d;
+  --color-primary-400: #f35156; /* Este es el 500 fijo */
+  --color-primary-500: #c43135; /* Color base */
+  --color-primary-600: #9e2d2a;
+  --color-primary-700: #7a1e1b;
+  --color-primary-800: #660f0c;
+  --color-primary-900: #4f0907;
 
-  /* Secondary Color */
+  --color-primary: var(--color-primary-500);
 
-  --ds-secondary-color-50: 243 245 246;
-  --ds-secondary-color-100: 219 224 226;
-  --ds-secondary-color-200: 183 193 197;
-  --ds-secondary-color-300: 146 161 167;
-  --ds-secondary-color-400: 123 139 145;
-  --ds-secondary-color-500: 73 91 99; /* Color original */
-  --ds-secondary-color-600: 67 81 87;
-  --ds-secondary-color-700: 54 64 68;
-  --ds-secondary-color-800: 41 47 49;
-  --ds-secondary-color-900: 29 33 36;
+  --color-secondary-50: #f9f2b3;
+  --color-secondary-100: #f9e200;
+  --color-secondary-200: #d8c300;
+  --color-secondary-300: #b0a100;
+  --color-secondary-400: #8f8a00;
+  --color-secondary-500: #6f6b00;
+  --color-secondary-600: #4f4a00;
+  --color-secondary-700: #3e3a00;
+  --color-secondary-800: #2e2a00;
+  --color-secondary-900: #1d1a00;
 
-  /* Accent Color */
+  --color-secondary: var(--color-secondary-100);
 
-  --ds-accent-color-50: 250 245 234;
-  --ds-accent-color-100: 246 236 217;
-  --ds-accent-color-200: 241 227 200;
-  --ds-accent-color-300: 236 218 183;
-  --ds-accent-color-400: 234 212 168; /* Original */
-  --ds-accent-color-500: 209 191 151;
-  --ds-accent-color-600: 184 168 134;
-  --ds-accent-color-700: 160 146 117;
-  --ds-accent-color-800: 135 123 101;
-  --ds-accent-color-900: 111 101 84;
+  --color-gray-50: #f5f5f5;
+  --color-gray-100: #e0e0e0;
+  --color-gray-200: #d0d0d0;
+  --color-gray-300: #c0c0c0;
+  --color-gray-400: #b0b0b0;
+  --color-gray-500: #cfcfcf;
+  --color-gray-600: #a0a0a0;
+  --color-gray-700: #909090;
+  --color-gray-800: #707070;
+  --color-gray-900: #505050;
 
-  /* Gray Color */
-  --ds-gray-color-50: 245 245 245;
-  --ds-gray-color-100: 230 230 230;
-  --ds-gray-color-200: 200 200 200;
-  --ds-gray-color-300: 170 170 170;
-  --ds-gray-color-400: 140 140 140;
-  --ds-gray-color-500: 105 105 105; /* Original */
-  --ds-gray-color-600: 90 90 90;
-  --ds-gray-color-700: 70 70 70;
-  --ds-gray-color-800: 50 50 50;
-  --ds-gray-color-900: 30 30 30;
+  --color-gray: var(--color-gray-500);
+
+  --color-accent: #151515; /* Marvel Black */
+  --color-background: #ffffff; /* Marvel White */
+  --color-text: #333;
+  --color-menu-background: #151515; /* Marvel Black */
+  --color-menu-text: #ffffff;
+  --color-marvel-blue: #4d58a0;
+
+  --font-size-h1: 2.5rem;
+  --font-size-h2: 2rem;
+  --font-size-h3: 1.75rem;
+  --font-size-h4: 1.5rem;
+  --font-size-h5: 1.25rem;
+  --font-size-h6: 1.15rem;
+
+  --font-size-paragraph: 1rem;
+  --font-size-small-paragraph: 0.875rem;
+  --font-size-large-paragraph: 1.125rem;
+
+  --font-size-span: 0.875rem;
+  --font-size-caption: 0.75rem;
+
+  --font-size-button: 1rem;
+  --font-size-link: 1rem;
+  --font-size-subtitle: 1.25rem;
+  --font-size-code: 0.875rem;
+
+  --font-size-body: 1rem;
+  --font-size-lead: 1.125rem;
 }

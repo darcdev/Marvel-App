@@ -4,6 +4,8 @@ import {
   bootstrapFolderPlus,
   bootstrapFolder2,
   bootstrapCardChecklist,
+  bootstrapArrowRightCircle,
+  bootstrapArrowUpRightCircle,
 } from '@ng-icons/bootstrap-icons';
 
 export const bootstrapIcons = {
@@ -12,4 +14,6 @@ export const bootstrapIcons = {
   bootstrapFolder2,
   bootstrapFolderPlus,
   bootstrapCardChecklist,
+  bootstrapArrowRightCircle,
+  bootstrapArrowUpRightCircle,
 };

@@ -1,0 +1,43 @@
+<div class="marvel-characters-container">
+  <div class="characters-grid">
+    <div class="character-card" *ngFor="let character of characters">
+      <div class="character-image-container">
+        <img
+          [src]="character.thumbnail"
+          [alt]="character.name"
+          class="character-image"
+        />
+      </div>
+      <div class="character-info">
+        <h4 class="character-name">{{ character.name }}</h4>
+        <div class="character-stats">
+          <p-tag
+            *ngIf="character.comics > 0"
+            [value]="character.comics + ' Comics'"
+            class="comics-tag"
+            severity="info"
+            [rounded]="true"
+          >
+          </p-tag>
+          <p-tag
+            *ngIf="character.series > 0"
+            [value]="character.series + ' Series'"
+            severity="info"
+            class="series-tag"
+            [rounded]="true"
+          >
+          </p-tag>
+          <p-tag
+            *ngIf="character.events > 0"
+            [value]="character.events + ' Eventos'"
+            severity="info"
+            class="events-tag"
+            [rounded]="true"
+          >
+          </p-tag>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+,

@@ -1,0 +1,96 @@
+.banner {
+  position: relative;
+  color: white;
+  margin-bottom: 40px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(8, 47, 126, 0.6) 0%,
+    rgba(236, 26, 26, 0.4) 100%
+  );
+  box-shadow: 0 8px 20px rgba(9, 28, 66, 0.4); /* Sombra ligeramente más notoria */
+}
+
+.banner-container {
+  width: 100%;
+  max-width: calc(1200px - (var(--lateral-spacing-page) * 2));
+  margin: 0 auto;
+  padding: 0 var(--lateral-spacing-page);
+  height: 100%;
+}
+
+.banner-content {
+  display: flex;
+  height: 100%;
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image img {
+  max-height: 400px;
+}
+
+.hero-info {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-title h2 {
+  font-size: 3rem !important;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 0px #000000, /* Borde negro más sutil */ 2px 0 0px #000000,
+    /* Borde negro sutil */ 1px 2px 2px #000000,
+    /* Borde negro moderado */ 2px 1px 2px #000000,
+    /* Borde negro moderado */ 2px 3px 3px #c43135,
+    /* Sombra roja */ 3px 2px 3px #c43135, /* Sombra roja */ 3px 4px 3px #c43135,
+    /* Sombra roja */ 4px 3px 4px #c43135, /* Sombra roja */ 4px 5px 4px #c43135,
+    /* Sombra roja */ 5px 4px 3px #c43135, /* Sombra roja */ 5px 6px 3px #c43135,
+    /* Sombra roja */ 6px 5px 3px #c43135, /* Sombra roja */ 6px 7px 2px #c43135,
+    /* Sombra roja */ 7px 6px 2px #c43135, /* Sombra roja */ 7px 8px 1px #c43135,
+    /* Sombra roja */ 8px 7px 1px #ffffff,
+    /* Blanco para el resplandor */ 8px 8px 1px #000000,
+    /* Borde negro más sutil */ 9px 9px 1px #000000; /* Borde negro más sutil */
+
+  transform: skew(3deg);
+}
+
+.hero-description p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.navigation-arrow {
+  align-self: flex-end;
+  font-size: 24px;
+}
+
+.navigation-arrow a {
+  color: white;
+}
+
+.register-now-button {
+  position: absolute;
+  bottom: -30px;
+  left: calc(50% - 120px);
+  background-color: var(--color-primary);
+  padding: 15px 30px;
+  transform: skew(-12deg);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.register-now-button:hover {
+  transform: skew(-12deg) scale(1.01);
+  cursor: pointer;
+  background-color: var(--color-primary-600);
+}

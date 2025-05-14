@@ -1,0 +1,17 @@
+:host {
+  flex: 1;
+}
+
+.home-content {
+  width: 100%;
+  max-width: calc(1200px - (var(--lateral-spacing-page) * 2));
+  margin: 0 auto;
+  padding: 0 var(--lateral-spacing-page);
+  margin-top: 60px;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
