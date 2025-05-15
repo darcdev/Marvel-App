@@ -1,5 +1,5 @@
 import { Provider } from '@angular/core';
-import { IInjectionFactory } from '@app/core/interfaces/factories/Iinjection-factory';
+import { IInjectionFactory } from '@app/core/interfaces/factories/IInjection-factory';
 import { ICharacterRepository } from '@app/data/interfaces/ICharacter.repository';
 
 import { CharactersRepositoryService } from '@app/data/repositories/characters/characters-repository.service';

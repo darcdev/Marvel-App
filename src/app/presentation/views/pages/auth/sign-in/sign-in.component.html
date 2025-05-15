@@ -17,7 +17,7 @@
         <h3>INICIA SESIÓN</h3>
       </div>
 
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="mt-5">
+      <form [formGroup]="loginForm" (submit)="onSubmitLogin()" class="mt-5">
         <div class="field">
           <p-floatlabel variant="in">
             <input

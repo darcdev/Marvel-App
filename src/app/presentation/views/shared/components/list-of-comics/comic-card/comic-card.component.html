@@ -18,19 +18,21 @@
   </div>
   <div class="comic-info">
     <div class="flex-1">
-      <h4 class="comic-title">{{ comic.title }}</h4>
-      @if (comic.description) {
-      <p class="comic-description">{{ comic.description }}</p>
-      }
+      <h4 class="comic-title line-clamp-1" [title]="comic.title">
+        {{ comic.title }}
+      </h4>
       <div class="comic-details">
         @if (comic.prices && comic.prices.length > 0) {
         <span class="comic-price">${{ comic.prices[0].price }}</span>
         }
         <span class="comic-pages">{{ comic.pageCount }} páginas</span>
       </div>
-      @if (comic.creators && comic.creators.items.length > 0) {
+      @if (comic.creators) {
       <div class="comic-creators">
-        <span>By: {{ comic.creators.items[0].name }}</span>
+        <span
+          >Autor:
+          {{ comic.creators.items?.[0]?.name || 'Sin Información' }}</span
+        >
       </div>
       }
     </div>

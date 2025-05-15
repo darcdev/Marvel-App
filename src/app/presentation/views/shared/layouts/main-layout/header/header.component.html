@@ -23,10 +23,14 @@
       </ul>
     </nav>
     <div class="user-actions">
+      @if (sessionUser) {
+      <app-user-logged-panel />
+      } @else {
       <button class="login-button" routerLink="/auth/sign-in">
         <ng-icon name="bootstrapArrowRightCircle" size="1.4rem"></ng-icon>
         Iniciar sesión
       </button>
+      }
     </div>
   </div>
 </header>

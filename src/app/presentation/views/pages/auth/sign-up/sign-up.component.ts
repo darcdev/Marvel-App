@@ -14,6 +14,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { StatesRequest } from '@app/presentation/constants/statesRequest';
+import { CreateSimpleAccountUserUseCaseService } from '@app/domain/usecases/user/create-simple-account-use-case.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -33,48 +35,57 @@ import {
   providers: [MessageService],
 })
 export class SignUpComponent {
-  loginForm!: FormGroup;
+  registerForm!: FormGroup;
   loading = false;
   submitted = false;
+  registerRequestStates: StatesRequest = StatesRequest.IDLE;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private _createSimpleAccountUserUseCase: CreateSimpleAccountUserUseCaseService
   ) {}
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
+    this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      identity: ['', Validators.required],
+      identification: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
 
   get f() {
-    return this.loginForm.controls;
+    return this.registerForm.controls;
   }
 
-  onSubmit(): void {
-    this.submitted = true;
-
-    if (this.loginForm.invalid) {
+  onSubmitRegister(): void {
+    if (this.registerForm.invalid) {
+      this.registerForm.markAllAsTouched();
       return;
     }
 
-    this.loading = true;
+    this.registerRequestStates = StatesRequest.LOADING;
 
-    setTimeout(() => {
-      this.loading = false;
-
-      this.messageService.add({
-        severity: 'success',
-        summary: 'Success',
-        detail: 'Login successful!',
-      });
-
-      this.router.navigate(['/']);
-    }, 1500);
+    this._createSimpleAccountUserUseCase.execute(this.registerForm.value).then(
+      (response) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Registro exitoso!',
+        });
+        this.registerRequestStates = StatesRequest.SUCCESS;
+        this.router.navigate(['/auth/sign-in']);
+      },
+      (error) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Error al registrar usuario!',
+        });
+        this.registerRequestStates = StatesRequest.ERROR;
+      }
+    );
   }
 }

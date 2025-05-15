@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { CharacterEntity } from '@app/domain/entities/Character.entity';
-import { GetAllCharactersUseCaseService } from '@app/domain/usecases/characters/get-all-characters.service';
+import { GetAllCharactersService } from '@app/domain/usecases/characters/get-all-characters.service';
 import { TagModule } from 'primeng/tag';
 
 @Component({
@@ -13,9 +13,7 @@ import { TagModule } from 'primeng/tag';
 export class MarvelCharactersListComponent implements OnInit {
   characters: CharacterEntity[] = [];
 
-  constructor(
-    private _getAllCharactersUseCase: GetAllCharactersUseCaseService
-  ) {}
+  constructor(private _getAllCharactersUseCase: GetAllCharactersService) {}
 
   ngOnInit(): void {
     this._getAllCharactersUseCase.execute().then((characters) => {

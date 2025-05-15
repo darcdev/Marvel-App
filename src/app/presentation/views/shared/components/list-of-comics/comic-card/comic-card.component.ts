@@ -18,7 +18,7 @@ import { NgIcon } from '@ng-icons/core';
 export class ComicCardComponent {
   @Input() comic!: ComicEntity;
 
-  ref: DynamicDialogRef | undefined;
+  ref: DynamicDialogRef | null = null;
 
   constructor(
     private dialogService: DialogService,
@@ -33,11 +33,12 @@ export class ComicCardComponent {
 
   showDetails(comic: ComicEntity): void {
     this.ref = this.dialogService.open(ComicDetailComponent, {
-      header: 'Comic Details',
-      width: '70%',
+      header: 'Detalles del cómic',
+      width: '80%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       maximizable: true,
+      modal: true,
       data: {
         comic: comic,
       },

@@ -24,6 +24,8 @@
     "@ng-icons/core": "^31.3.0",
     "@ng-icons/heroicons": "^31.3.0",
     "@ng-icons/material-icons": "^31.3.0",
+    "@ngxs/storage-plugin": "^19.0.0",
+    "@ngxs/store": "^19.0.0",
     "@primeng/themes": "^19.1.2",
     "@supabase/supabase-js": "^2.49.4",
     "@tailwindcss/postcss": "^4.0.6",

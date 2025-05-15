@@ -6,7 +6,7 @@ import { CharacterEntity } from '@app/domain/entities/Character.entity';
 @Injectable({
   providedIn: 'root',
 })
-export class GetAllCharactersUseCaseService
+export class GetAllCharactersService
   implements UseCase<string, CharacterEntity[]>
 {
   constructor(private _characterRepository: ICharacterRepository) {}

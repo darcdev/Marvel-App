@@ -1,0 +1,30 @@
+<button (click)="op.toggle($event)">
+  <p-avatar
+    [label]="sessionUser?.user?.email?.at(0)?.toUpperCase()"
+    styleClass="mr-2 cursor-pointer"
+    size="large"
+    shape="circle"
+  >
+    <p-popover #op>
+      <div class="flex flex-col justify-center">
+        <span class="font-bold">{{ userData?.profile?.name }}</span>
+        <span class="text-sm text-gray-800">{{
+          sessionUser?.user?.email
+        }}</span>
+        <span class="text-sm text-gray-800">{{
+          userData?.profile?.identification
+        }}</span>
+      </div>
+      <hr class="mt-3" />
+      <div class="mt-5">
+        <button
+          type="submit"
+          label="CERRAR SESIÓN"
+          pButton
+          class="primary-button w-full"
+          (click)="logOut()"
+        ></button>
+      </div>
+    </p-popover>
+  </p-avatar>
+</button>

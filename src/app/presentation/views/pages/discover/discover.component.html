@@ -7,20 +7,41 @@
           <ng-icon name="bootstrapSearch" size="1.4rem"></ng-icon>
         </p-inputgroup-addon>
         <p-floatlabel variant="in">
-          <input pInputText id="over_label" [(ngModel)]="value1" />
+          <input
+            pInputText
+            id="over_label"
+            [(ngModel)]="value1"
+            (ngModelChange)="onSearch($event)"
+          />
           <label for="over_label">Buscar por nombre de comic</label>
         </p-floatlabel>
       </p-inputgroup>
     </div>
-    <app-list-of-comics />
-    <div class="mt-4">
+
+    @if (comics.length > 0) {
+    <div class="mt-4 mb-4">
       <p-paginator
-        [first]="first"
-        [rows]="rows"
-        [totalRecords]="120"
+        [first]="pagination.offset"
+        [rows]="pagination.limit"
+        [totalRecords]="pagination.total"
         [rowsPerPageOptions]="[10, 20, 30]"
         (onPageChange)="onPageChange($event)"
       />
     </div>
+    }
+
+    <app-list-of-comics [comics]="comics" />
+    @if (comics.length > 0) {
+    <div class="mt-4">
+      <p-paginator
+        [first]="pagination.offset"
+        [rows]="pagination.limit"
+        [totalRecords]="pagination.total"
+        [rowsPerPageOptions]="[10, 20, 30]"
+        (onPageChange)="onPageChange($event)"
+      />
+    </div>
+
+    }
   </section>
 </div>

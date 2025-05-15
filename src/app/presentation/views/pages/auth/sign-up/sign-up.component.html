@@ -17,7 +17,11 @@
         <h3>REGISTRATE</h3>
       </div>
 
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="mt-5">
+      <form
+        [formGroup]="registerForm"
+        (submit)="onSubmitRegister()"
+        class="mt-5"
+      >
         <div class="field">
           <p-floatlabel variant="in">
             <input
@@ -38,7 +42,7 @@
               id="over_label"
               autocomplete="off"
               [fluid]="true"
-              formControlName="identity"
+              formControlName="identification"
             />
             <label for="over_label">Identidad</label>
           </p-floatlabel>
