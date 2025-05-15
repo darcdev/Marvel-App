@@ -37,6 +37,8 @@ Se debe tener Node.js versión 18 o superior instalado (https://nodejs.org/en)
 
 ### Pasos
 
+### Instalación local
+
 - Coloca el código fuente en una carpeta local  
 - Abre una terminal en esa carpeta  
 - Ejecuta `npm install` para instalar dependencias  
@@ -57,6 +59,24 @@ Debe aparecer las pruebas hasta el momento:
 
 y abre http://localhost:4201  
 **Nota:** coloca en `--port` un puerto que tengas libre, para evitar problemas de puertos ya usados.
+
+### Instalación con Docker
+
+1. Dentro de la carpeta del proyecto (en la raíz), ejecuta `docker build -t marvel-app .`.
+2. Luego, ejecuta `docker run -d -p 8080:80 --name marvel-container marvel-app`, para correr el contenedor donde está alojada la aplicación.
+3. Entra en tu computador a `http://localhost:8080`.
+
+---
+
+### Instalación de estático
+
+1. Ir a la carpeta de la compilación del proyecto, que contiene los archivos estáticos.
+2. Ejecutar el comando `npm run build`.
+3. Entra a la carpeta `dist` luego `marvel-app/browser`.
+4. Instalar un servidor http local, en Python o `http-server` es un paquete que sirve para correr un server local, ejecutamos el comando de acuerdo al lenguaje o librería usada y el proyecto ya debería ejecutarse sin problemas en el puerto especificado.
+
+> Nota: si tienes el compilado, no necesitas entrar al `dist`, solo ingresa a la carpeta donde tienes ese paquete de archivos javascript, html y ejecuta el paso 4.
+
 
 ---
 
