@@ -22,7 +22,7 @@ export class AuthGuardRoute implements CanActivate {
   }
 
   private async checkUserLogged(): Promise<boolean | UrlTree> {
-    if (!environment.production) {
+    if (environment.production) {
       try {
         const user = await this.authSessionService.getUser();
         if (!user) {
