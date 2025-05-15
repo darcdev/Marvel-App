@@ -7,12 +7,13 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ComicDetailComponent } from '../comic-detail/comic-detail.component';
 import { FooterComicDetailComponent } from '../comic-detail/footer-comic-detail/footer-comic-detail.component';
 import { NgIcon } from '@ng-icons/core';
+import { AppendCurrencyPipe } from '../../../pipes/AppendUsdPipe';
 
 @Component({
   selector: 'app-comic-card',
   templateUrl: './comic-card.component.html',
   styleUrl: './comic-card.component.css',
-  imports: [CommonModule, ButtonModule, NgIcon],
+  imports: [CommonModule, ButtonModule, NgIcon, AppendCurrencyPipe],
   providers: [DialogService, MessageService],
 })
 export class ComicCardComponent {

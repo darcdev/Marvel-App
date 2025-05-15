@@ -34,5 +34,5 @@ export const routes: Routes = [
       { path: 'sign-up', component: SignUpComponent },
     ],
   },
-  { path: '**', redirectTo: '/404' },
+  { path: '**', redirectTo: '' },
 ];

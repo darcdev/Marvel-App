@@ -3,16 +3,14 @@
     <img
       [src]="comic.thumbnail.path + '.' + comic.thumbnail.extension"
       [alt]="comic.title"
-      class="comic-image"
-    />
+      class="comic-image" />
     <button
       type="button"
       class="favorite-button"
       pButton
       (click)="onHandleFavorite(comic)"
       pTooltip="Agregar a favoritos"
-      tooltipPosition="top"
-    >
+      tooltipPosition="top">
       <ng-icon name="bootstrapHeartFill"></ng-icon>
     </button>
   </div>
@@ -23,18 +21,20 @@
       </h4>
       <div class="comic-details">
         @if (comic.prices && comic.prices.length > 0) {
-        <span class="comic-price">${{ comic.prices[0].price }}</span>
+          <span class="comic-price"
+            >${{ comic.prices[0].price | appendCurrency: 'USD' }}</span
+          >
         }
         <span class="comic-pages">{{ comic.pageCount }} páginas</span>
       </div>
       @if (comic.creators) {
-      <div class="comic-creators">
-        @if (comic.creators.items && comic.creators.items.length > 0) {
-        <span>Autor: {{ comic.creators.items[0].name }}</span>
-        } @else {
-        <span>Autor: Sin Información</span>
-        }
-      </div>
+        <div class="comic-creators">
+          @if (comic.creators.items && comic.creators.items.length > 0) {
+            <span>Autor: {{ comic.creators.items[0].name }}</span>
+          } @else {
+            <span>Autor: Sin Información</span>
+          }
+        </div>
       }
     </div>
     <div>
@@ -43,8 +43,7 @@
         label="VER DETALLES"
         pButton
         class="primary-button w-full"
-        (click)="showDetails(comic)"
-      ></button>
+        (click)="showDetails(comic)"></button>
     </div>
   </div>
 </div>
