@@ -15,6 +15,9 @@ import { UserProfileResponse } from '@app/core/models/auth';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { AddComicToFavoriteUseCaseService } from '@app/domain/usecases/comics/add-comic-to-favorite.service copy';
+import { StatesRequest } from '@app/presentation/constants/statesRequest';
+import { LoaderRequestComponent } from '../../../theme/components/loader-request/loader-request.component';
+import { MessageErrorComponent } from '../../../theme/components/messageError/messageError.component';
 @Component({
   selector: 'app-discover',
   imports: [
@@ -27,6 +30,8 @@ import { AddComicToFavoriteUseCaseService } from '@app/domain/usecases/comics/ad
     InputTextModule,
     NgIcon,
     Toast,
+    LoaderRequestComponent,
+    MessageErrorComponent,
   ],
   templateUrl: './discover.component.html',
   styleUrl: './discover.component.css',
@@ -38,6 +43,8 @@ export class DiscoverComponent implements OnInit {
   value1: string = '';
   comics: ComicEntity[] = [];
   private searchTimeout: any = null;
+  statusRequest: StatesRequest = StatesRequest.IDLE;
+  StatesRequest = StatesRequest;
 
   pagination: StatePagination = {
     offset: 0,
@@ -58,37 +65,48 @@ export class DiscoverComponent implements OnInit {
       this.user = user;
     });
 
-    this._getAllComicsUseCase
-      .execute({
-        offset: 0,
-        limit: 10,
-      })
-      .then((comics) => {
-        this.comics = comics.data.results;
-        this.pagination = {
-          offset: comics.data.offset,
-          limit: comics.data.limit,
-          total: comics.data.total,
-          count: comics.data.count,
-        };
-      });
+    void this.loadComics();
   }
 
-  onPageChange(event: any): void {
-    this._getAllComicsUseCase
-      .execute({
+  async loadComics(): Promise<void> {
+    this.statusRequest = StatesRequest.LOADING;
+
+    try {
+      const comics = await this._getAllComicsUseCase.execute({
+        offset: 0,
+        limit: 10,
+      });
+      this.comics = comics.data.results;
+      this.pagination = {
+        offset: comics.data.offset,
+        limit: comics.data.limit,
+        total: comics.data.total,
+        count: comics.data.count,
+      };
+      this.statusRequest = StatesRequest.SUCCESS;
+    } catch (error) {
+      this.statusRequest = StatesRequest.ERROR;
+    }
+  }
+
+  async onPageChange(event: any): Promise<void> {
+    this.statusRequest = StatesRequest.LOADING;
+    try {
+      const comics = await this._getAllComicsUseCase.execute({
         offset: event.first,
         limit: event.rows,
-      })
-      .then((comics) => {
-        this.comics = comics.data.results;
-        this.pagination = {
-          offset: comics.data.offset,
-          limit: comics.data.limit,
-          total: comics.data.total,
-          count: comics.data.count,
-        };
       });
+      this.comics = comics.data.results;
+      this.pagination = {
+        offset: comics.data.offset,
+        limit: comics.data.limit,
+        total: comics.data.total,
+        count: comics.data.count,
+      };
+      this.statusRequest = StatesRequest.SUCCESS;
+    } catch (error) {
+      this.statusRequest = StatesRequest.ERROR;
+    }
   }
 
   onSearch(event: string): void {
@@ -96,12 +114,23 @@ export class DiscoverComponent implements OnInit {
       clearTimeout(this.searchTimeout);
     }
 
+    let params = {};
+
+    if (event !== '') {
+      params = {
+        titleStartsWith: event,
+        limit: this.pagination.limit,
+      };
+    } else {
+      params = {
+        limit: this.pagination.limit,
+      };
+    }
+
     this.searchTimeout = setTimeout(() => {
+      this.statusRequest = StatesRequest.LOADING;
       this._getAllComicsUseCase
-        .execute({
-          titleStartsWith: event,
-          limit: this.pagination.limit,
-        })
+        .execute(params)
         .then((comics) => {
           this.comics = comics.data.results;
           this.pagination = {
@@ -110,6 +139,10 @@ export class DiscoverComponent implements OnInit {
             total: comics.data.total,
             count: comics.data.count,
           };
+          this.statusRequest = StatesRequest.SUCCESS;
+        })
+        .catch((error) => {
+          this.statusRequest = StatesRequest.ERROR;
         });
     }, 300);
   }

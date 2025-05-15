@@ -21,11 +21,18 @@ export class AuthenticationService extends AuthUserAdapter {
     super();
   }
 
-  simpleLogin(loginUserDto: LoginUserRequestDTO): Promise<AuthResponse> {
-    return this.supabaseService.supabase.auth.signInWithPassword({
-      email: loginUserDto.email,
-      password: loginUserDto.password,
-    });
+  async simpleLogin(loginUserDto: LoginUserRequestDTO): Promise<AuthResponse> {
+    const authResponse: AuthResponse =
+      await this.supabaseService.supabase.auth.signInWithPassword({
+        email: loginUserDto.email,
+        password: loginUserDto.password,
+      });
+
+    if (!authResponse.data || authResponse.error) {
+      throw new Error('Error al iniciar sesión');
+    }
+
+    return authResponse;
   }
 
   async register(
@@ -43,7 +50,7 @@ export class AuthenticationService extends AuthUserAdapter {
       });
 
     if (!authResponse.data || authResponse.error) {
-      throw new Error('Error creating user');
+      throw new Error('Error al registrar usuario');
     } else {
       await this._userRepository.createUserProfile({
         authUser: authResponse.data.user!.id,

@@ -39,3 +39,9 @@ button.primary-button:hover {
   height: 2px;
   background-color: var(--color-primary);
 }
+
+.field-validation-error {
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  font-weight: 700;
+}

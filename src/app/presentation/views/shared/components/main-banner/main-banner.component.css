@@ -24,6 +24,15 @@
   height: 100%;
 }
 
+@media (max-width: 1024px) {
+  .banner {
+    height: auto;
+  }
+  .banner-content {
+    flex-direction: column;
+  }
+}
+
 .hero-image {
   flex: 1;
   display: flex;
@@ -47,18 +56,12 @@
   font-size: 3rem !important;
   font-weight: bold;
   margin-bottom: 20px;
-  text-shadow: 0 2px 0px #000000, /* Borde negro más sutil */ 2px 0 0px #000000,
-    /* Borde negro sutil */ 1px 2px 2px #000000,
-    /* Borde negro moderado */ 2px 1px 2px #000000,
-    /* Borde negro moderado */ 2px 3px 3px #c43135,
-    /* Sombra roja */ 3px 2px 3px #c43135, /* Sombra roja */ 3px 4px 3px #c43135,
-    /* Sombra roja */ 4px 3px 4px #c43135, /* Sombra roja */ 4px 5px 4px #c43135,
-    /* Sombra roja */ 5px 4px 3px #c43135, /* Sombra roja */ 5px 6px 3px #c43135,
-    /* Sombra roja */ 6px 5px 3px #c43135, /* Sombra roja */ 6px 7px 2px #c43135,
-    /* Sombra roja */ 7px 6px 2px #c43135, /* Sombra roja */ 7px 8px 1px #c43135,
-    /* Sombra roja */ 8px 7px 1px #ffffff,
-    /* Blanco para el resplandor */ 8px 8px 1px #000000,
-    /* Borde negro más sutil */ 9px 9px 1px #000000; /* Borde negro más sutil */
+  text-shadow: 0 2px 0px #000000, 2px 0 0px #000000, 1px 2px 2px #000000,
+    2px 1px 2px #000000, 2px 3px 3px #c43135, 3px 2px 3px #c43135,
+    3px 4px 3px #c43135, 4px 3px 4px #c43135, 4px 5px 4px #c43135,
+    5px 4px 3px #c43135, 5px 6px 3px #c43135, 6px 5px 3px #c43135,
+    6px 7px 2px #c43135, 7px 6px 2px #c43135, 7px 8px 1px #c43135,
+    8px 7px 1px #ffffff, 8px 8px 1px #000000, 9px 9px 1px #000000;
 
   transform: skew(3deg);
 }

@@ -52,7 +52,7 @@ export class SignUpComponent {
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       identification: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 

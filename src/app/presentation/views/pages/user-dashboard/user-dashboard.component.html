@@ -1,11 +1,34 @@
 <div class="user-dashboard-container">
   <section class="section-list-comics">
     <h3 class="section-title">Tus Comics Favoritos</h3>
+    @if (comics.length > 0) {
     <app-list-of-comics
       [comics]="comics"
       [onHandleFavorite]="onRemoveComicFromFavorites.bind(this)"
     />
     <div class="mt-4"></div>
+    } @else if (statusRequest === StatesRequest.LOADING) {
+    <div class="flex justify-center items-center mt-4">
+      <app-loader-request message="Cargando comics favoritos..." />
+    </div>
+    } @else if (statusRequest === StatesRequest.ERROR) {
+    <div class="flex justify-center items-center mt-4">
+      <app-message-error
+        message="Ha ocurrido un error al cargar los cómics favoritos"
+      />
+    </div>
+    } @else {
+    <div class="flex flex-col items-center justify-center">
+      <p>No tienes cómics favoritos aún</p>
+      <button
+        type="submit"
+        label="Descubrir cómics"
+        pButton
+        class="primary-button mt-4"
+        routerLink="/discover"
+      ></button>
+    </div>
+    }
   </section>
   <p-toast />
 </div>

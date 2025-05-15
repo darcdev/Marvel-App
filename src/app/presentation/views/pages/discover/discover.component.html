@@ -18,7 +18,7 @@
       </p-inputgroup>
     </div>
 
-    @if (comics.length > 0) {
+    @if (comics.length > 0 && statusRequest === StatesRequest.SUCCESS) {
     <div class="mt-4 mb-4">
       <p-paginator
         [first]="pagination.offset"
@@ -28,13 +28,20 @@
         (onPageChange)="onPageChange($event)"
       />
     </div>
-    }
-
+    } @if (statusRequest === StatesRequest.LOADING) {
+    <div class="flex justify-center items-center mt-4">
+      <app-loader-request message="Cargando cómics..." />
+    </div>
+    } @if (statusRequest === StatesRequest.ERROR) {
+    <div class="flex justify-center items-center mt-4">
+      <app-message-error message="Ha ocurrido un error al cargar los cómics" />
+    </div>
+    } @if (comics.length > 0 && statusRequest === StatesRequest.SUCCESS) {
     <app-list-of-comics
       [comics]="comics"
       [onHandleFavorite]="onAddToFavorites.bind(this)"
     />
-    @if (comics.length > 0) {
+    } @if (comics.length > 0 && statusRequest === StatesRequest.SUCCESS) {
     <div class="mt-4">
       <p-paginator
         [first]="pagination.offset"

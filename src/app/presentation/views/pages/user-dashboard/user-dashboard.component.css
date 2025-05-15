@@ -1,3 +1,7 @@
+:host {
+  flex: 1;
+}
+
 .user-dashboard-container {
   width: 100%;
   max-width: calc(1200px - (var(--lateral-spacing-page) * 2));

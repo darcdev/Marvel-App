@@ -15,9 +15,22 @@ import {
   RemoveFavoriteComic,
   SetFavoriteComics,
 } from '@app/presentation/state/favorite-comics/actions';
+import { ButtonModule } from 'primeng/button';
+import { RouterModule } from '@angular/router';
+import { StatesRequest } from '@app/presentation/constants/statesRequest';
+import { LoaderRequestComponent } from '../../../theme/components/loader-request/loader-request.component';
+import { MessageErrorComponent } from '../../../theme/components/messageError/messageError.component';
 @Component({
   selector: 'app-user-dashboard',
-  imports: [ListOfComicsComponent, PaginatorModule, Toast],
+  imports: [
+    ListOfComicsComponent,
+    PaginatorModule,
+    Toast,
+    ButtonModule,
+    RouterModule,
+    LoaderRequestComponent,
+    MessageErrorComponent,
+  ],
   templateUrl: './user-dashboard.component.html',
   styleUrl: './user-dashboard.component.css',
   providers: [MessageService],
@@ -26,6 +39,8 @@ export class UserDashboardComponent {
   comics: ComicEntity[] = [];
   listOfComics$: Observable<ComicEntity[]>;
   user: UserProfileResponse | null = null;
+  statusRequest: StatesRequest = StatesRequest.IDLE;
+  StatesRequest = StatesRequest;
 
   constructor(
     private _getFavoriteComicsService: GetFavoriteComicsUseCaseService,
@@ -45,7 +60,6 @@ export class UserDashboardComponent {
     });
 
     this.listOfComics$.subscribe((comics) => {
-      console.log('comics', comics);
       this.comics = comics ?? [];
     });
 
@@ -53,12 +67,15 @@ export class UserDashboardComponent {
   }
 
   async loadFavoriteComics(): Promise<void> {
+    this.statusRequest = StatesRequest.LOADING;
     try {
       const comics = await this._getFavoriteComicsService.execute();
       this.comics = comics.map((comic) => comic.data);
       this.store.dispatch(new SetFavoriteComics(this.comics));
+      this.statusRequest = StatesRequest.SUCCESS;
     } catch (error) {
-      console.log('Error al cargar los cómics favoritos', error);
+      this.statusRequest = StatesRequest.ERROR;
+      console.error('Error al cargar los cómics favoritos', error);
     }
   }
 

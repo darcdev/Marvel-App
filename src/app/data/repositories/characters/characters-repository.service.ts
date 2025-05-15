@@ -27,7 +27,6 @@ export class CharactersRepositoryService extends ICharacterRepository {
         getMarvelApiUrl('characters')
       )
     ).then((response) => {
-      console.log(response);
       return this._listAllCharacterMapper.mapTo(response.data.results);
     });
   }

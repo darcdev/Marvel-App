@@ -29,11 +29,11 @@
       </div>
       @if (comic.creators) {
       <div class="comic-creators">
-        @if (comic.creators.items[0].name) {
+        @if (comic.creators.items && comic.creators.items.length > 0) {
         <span>Autor: {{ comic.creators.items[0].name }}</span>
         } @else {
         <span>Autor: Sin Información</span>
-        } >
+        }
       </div>
       }
     </div>

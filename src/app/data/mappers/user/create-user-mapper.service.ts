@@ -10,7 +10,6 @@ export class CreateUserMapperService
   implements MapperFrom<UserEntity, UserDto>, MapperTo<UserDto, UserEntity>
 {
   mapFrom(param: UserEntity): UserDto {
-    console.log(param);
     return {
       email: param.email,
       name: param.name,

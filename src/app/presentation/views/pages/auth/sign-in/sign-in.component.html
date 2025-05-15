@@ -29,17 +29,44 @@
             />
             <label for="over_label">Correo electrónico</label>
           </p-floatlabel>
+          @if(loginForm.get('email')?.errors && (loginForm.get('email')?.touched
+          || loginForm.get('email')?.dirty)) {
+          <small
+            class="field-validation-error"
+            *ngIf="loginForm.get('email')?.errors?.['required']"
+          >
+            El correo electrónico es requerido
+          </small>
+          <small
+            class="field-validation-error"
+            *ngIf="loginForm.get('email')?.errors?.['email']"
+          >
+            El correo electrónico no es válido
+          </small>
+          }
         </div>
 
         <div class="field">
           <p-floatlabel variant="in">
             <p-password
               formControlName="password"
+              [feedback]="false"
               inputId="on_label"
+              [toggleMask]="true"
               [fluid]="true"
             />
             <label for="on_label">Contraseña</label>
           </p-floatlabel>
+          @if(loginForm.get('password')?.errors &&
+          (loginForm.get('password')?.touched ||
+          loginForm.get('password')?.dirty)) {
+          <small
+            class="field-validation-error"
+            *ngIf="loginForm.get('password')?.errors?.['required']"
+          >
+            La contraseña es requerida
+          </small>
+          }
         </div>
 
         <button

@@ -61,7 +61,7 @@ export class SignInComponent implements OnInit {
     return this.loginForm.controls;
   }
 
-  onSubmitLogin(): void {
+  async onSubmitLogin(): Promise<void> {
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
       return;
@@ -69,24 +69,22 @@ export class SignInComponent implements OnInit {
 
     this.loginRequestStates = StatesRequest.LOADING;
 
-    this._simpleUserLoginUseCase.execute(this.loginForm.value).then(
-      (response) => {
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Success',
-          detail: 'Has iniciado sesión correctamente!',
-        });
-        this.loginRequestStates = StatesRequest.SUCCESS;
-        this.router.navigate(['/user-dashboard']);
-      },
-      (error) => {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Error',
-          detail: 'Credenciales incorrectas, intente nuevamente!',
-        });
-        this.loginRequestStates = StatesRequest.ERROR;
-      }
-    );
+    try {
+      await this._simpleUserLoginUseCase.execute(this.loginForm.value);
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Success',
+        detail: 'Has iniciado sesión correctamente!',
+      });
+      this.loginRequestStates = StatesRequest.SUCCESS;
+      this.router.navigate(['/user-dashboard']);
+    } catch (error) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Credenciales incorrectas, intente nuevamente!',
+      });
+      this.loginRequestStates = StatesRequest.ERROR;
+    }
   }
 }

@@ -2,25 +2,7 @@
   <div class="header-container">
     <app-logo-marvel-fans />
     <nav class="navigation lg:block hidden">
-      <ul>
-        <li>
-          <a
-            routerLink="/"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-            >Inicio</a
-          >
-        </li>
-        <li class="flex items-center gap-1">
-          <ng-icon name="bootstrapSearch" size="1.4rem"></ng-icon>
-          <a routerLink="/discover" routerLinkActive="active"> Descubrir</a>
-        </li>
-        <li>
-          <a routerLink="/user-dashboard" routerLinkActive="active"
-            >Favoritos</a
-          >
-        </li>
-      </ul>
+      <app-main-nav />
     </nav>
     <div class="user-actions">
       @if (sessionUser) {
@@ -28,10 +10,15 @@
       } @else {
       <button class="login-button" routerLink="/auth/sign-in">
         <ng-icon name="bootstrapArrowRightCircle" size="1.4rem"></ng-icon>
-        Iniciar sesión
+        Iniciar <span class="hidden lg:block">sesión</span>
       </button>
       }
     </div>
+  </div>
+  <div class="navigation-mobile">
+    <nav class="navigation block lg:hidden">
+      <app-main-nav />
+    </nav>
   </div>
 </header>
 <div class="header-separator"></div>

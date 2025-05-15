@@ -33,6 +33,16 @@
             />
             <label for="over_label">Nombre</label>
           </p-floatlabel>
+          @if(registerForm.get('name')?.errors &&
+          (registerForm.get('name')?.touched ||
+          registerForm.get('name')?.dirty)) {
+          <small
+            class="field-validation-error"
+            *ngIf="registerForm.get('name')?.errors?.['required']"
+          >
+            El nombre es requerido
+          </small>
+          }
         </div>
 
         <div class="field">
@@ -46,6 +56,16 @@
             />
             <label for="over_label">Identidad</label>
           </p-floatlabel>
+          @if(registerForm.get('identification')?.errors &&
+          (registerForm.get('identification')?.touched ||
+          registerForm.get('identification')?.dirty)) {
+          <small
+            class="field-validation-error"
+            *ngIf="registerForm.get('identification')?.errors?.['required']"
+          >
+            El número de identificación es requerido
+          </small>
+          }
         </div>
 
         <div class="field">
@@ -59,6 +79,22 @@
             />
             <label for="over_label">Correo electrónico</label>
           </p-floatlabel>
+          @if(registerForm.get('email')?.errors &&
+          (registerForm.get('email')?.touched ||
+          registerForm.get('email')?.dirty)) {
+          <small
+            class="field-validation-error"
+            *ngIf="registerForm.get('email')?.errors?.['required']"
+          >
+            El correo electrónico es requerido
+          </small>
+          <small
+            class="field-validation-error"
+            *ngIf="registerForm.get('email')?.errors?.['email']"
+          >
+            El correo electrónico no es válido
+          </small>
+          }
         </div>
 
         <div class="field">
@@ -66,10 +102,27 @@
             <p-password
               formControlName="password"
               inputId="on_label"
+              [toggleMask]="true"
               [fluid]="true"
             />
             <label for="on_label">Contraseña</label>
           </p-floatlabel>
+          @if(registerForm.get('password')?.errors &&
+          (registerForm.get('password')?.touched ||
+          registerForm.get('password')?.dirty)) {
+          <small
+            class="field-validation-error"
+            *ngIf="registerForm.get('password')?.errors?.['required']"
+          >
+            La contraseña es requerida
+          </small>
+          <small
+            class="field-validation-error"
+            *ngIf="registerForm.get('password')?.errors?.['minlength']"
+          >
+            La contraseña debe tener al menos 6 caracteres
+          </small>
+          }
         </div>
 
         <button

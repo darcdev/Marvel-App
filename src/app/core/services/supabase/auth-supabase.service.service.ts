@@ -21,13 +21,13 @@ export class AuthSupabaseService extends IAuthUserSession {
   async getUser(): Promise<UserProfileResponse> {
     const user = await this.supabaseService.supabase.auth.getUser();
     if (!user) {
-      throw new Error('User not authenticated');
+      throw new Error('Usuario no autenticado');
     }
     const userProfile = await this._userRepository.getUserProfile(
       user?.data?.user?.id ?? ''
     );
     if (!userProfile) {
-      throw new Error('User profile not found');
+      throw new Error('Perfil de usuario no encontrado');
     }
     return {
       profile: userProfile,

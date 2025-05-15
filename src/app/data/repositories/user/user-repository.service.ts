@@ -40,7 +40,7 @@ export class UserRepositoryService extends IUserRepository {
       .single<UserDto>();
 
     if (error) {
-      throw new Error('Error creating profile');
+      throw new Error('Error al crear perfil de usuario');
     }
 
     return this.createUserMapper.mapTo(data);

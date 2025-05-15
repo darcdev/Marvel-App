@@ -1,0 +1,19 @@
+<ul>
+  <li>
+    <a
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Inicio</a
+    >
+  </li>
+  @if (sessionUser) {
+  <li class="flex items-center gap-1">
+    <ng-icon name="bootstrapSearch" size="1.4rem"></ng-icon>
+    <a routerLink="/discover" routerLinkActive="active"> Descubrir</a>
+  </li>
+  <li>
+    <a routerLink="/user-dashboard" routerLinkActive="active">Favoritos</a>
+  </li>
+  }
+</ul>
