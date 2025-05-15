@@ -3,6 +3,7 @@ import { BaseResponse } from '@app/core/interfaces/marvelResponses/baseResponses
 import { ParamsRequest } from '@app/presentation/models/state/ParamsRequest';
 import { ListFavoriteComicsDTO } from '../dtos/comics/listFavoriteComicsDTO';
 import { RemoveFavoriteComicDTO } from '../dtos/comics/RemoveFavoriteComicDTO';
+import { GetAllFavoriteComicsParams } from '../models/params/comic.params';
 
 export abstract class IComicsRepository {
   abstract getAllComics(
@@ -12,5 +13,7 @@ export abstract class IComicsRepository {
   abstract removeComicFromFavorites(
     comic: RemoveFavoriteComicDTO
   ): Promise<void>;
-  abstract getFavorites(): Promise<ListFavoriteComicsDTO[]>;
+  abstract getFavorites(
+    params: GetAllFavoriteComicsParams
+  ): Promise<ListFavoriteComicsDTO[]>;
 }

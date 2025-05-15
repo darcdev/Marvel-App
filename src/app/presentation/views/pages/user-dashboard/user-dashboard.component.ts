@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { PaginatorModule } from 'primeng/paginator';
 import { ListOfComicsComponent } from '../../shared/components/list-of-comics/list-of-comics.component';
 import { GetFavoriteComicsUseCaseService } from '@app/domain/usecases/comics/get-favorite-comics';
@@ -35,7 +35,7 @@ import { MessageErrorComponent } from '../../../theme/components/messageError/me
   styleUrl: './user-dashboard.component.css',
   providers: [MessageService],
 })
-export class UserDashboardComponent {
+export class UserDashboardComponent implements OnDestroy {
   comics: ComicEntity[] = [];
   listOfComics$: Observable<ComicEntity[]>;
   user: UserProfileResponse | null = null;
@@ -55,22 +55,28 @@ export class UserDashboardComponent {
   }
 
   ngOnInit(): void {
-    this._authSupabaseService.getUser().then((user) => {
-      this.user = user;
-    });
-
-    this.listOfComics$.subscribe((comics) => {
+    this.loadUserData();
+    this.listOfComics$.subscribe(comics => {
       this.comics = comics ?? [];
     });
+  }
 
-    void this.loadFavoriteComics();
+  loadUserData(): void {
+    this.statusRequest = StatesRequest.LOADING;
+
+    this._authSupabaseService.getUser().then(user => {
+      this.user = user;
+
+      this.loadFavoriteComics();
+    });
   }
 
   async loadFavoriteComics(): Promise<void> {
-    this.statusRequest = StatesRequest.LOADING;
     try {
-      const comics = await this._getFavoriteComicsService.execute();
-      this.comics = comics.map((comic) => comic.data);
+      const comics = await this._getFavoriteComicsService.execute({
+        userId: this.user?.user.data.user?.id ?? '',
+      });
+      this.comics = comics.map(comic => comic.data);
       this.store.dispatch(new SetFavoriteComics(this.comics));
       this.statusRequest = StatesRequest.SUCCESS;
     } catch (error) {
@@ -98,5 +104,9 @@ export class UserDashboardComponent {
         detail: 'Ha ocurrido un error al eliminar el cómic de favoritos',
       });
     }
+  }
+
+  ngOnDestroy(): void {
+    this.store.dispatch(new SetFavoriteComics([]));
   }
 }

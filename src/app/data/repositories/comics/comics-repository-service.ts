@@ -13,6 +13,7 @@ import { ParamsRequest } from '@app/presentation/models/state/ParamsRequest';
 import { firstValueFrom } from 'rxjs';
 import { AddFavoriteComicsDTO } from '@app/data/dtos/comics/AddFavoriteComicsDTO copy 2';
 import { RemoveFavoriteComicDTO } from '@app/data/dtos/comics/RemoveFavoriteComicDTO';
+import { GetAllFavoriteComicsParams } from '@app/data/models/params/comic.params';
 
 @Injectable({
   providedIn: 'root',
@@ -38,6 +39,13 @@ export class ComicsRepositoryService extends IComicsRepository {
     });
   }
   async addComicToFavorites(comic: AddFavoriteComicsDTO) {
+    const existsComicInFavorites = await this.existsComicInFavorites({
+      userId: comic.userId,
+      idComic: comic.id,
+    });
+    if (existsComicInFavorites) {
+      throw new Error('El cómic ya está en favoritos');
+    }
     const { error } = await this.supabaseService.supabase
       .from(this.nameTable)
       .insert({
@@ -45,10 +53,8 @@ export class ComicsRepositoryService extends IComicsRepository {
         userId: comic.userId,
         data: comic,
       });
+
     if (error) {
-      if (error.code === '23505') {
-        throw new Error('El cómic ya está en favoritos');
-      }
       throw new Error('Ha ocurrido un error al agregar el cómic a favoritos');
     }
   }
@@ -63,13 +69,37 @@ export class ComicsRepositoryService extends IComicsRepository {
       throw new Error('Ha ocurrido un error al eliminar el cómic de favoritos');
     }
   }
-  async getFavorites(): Promise<ListFavoriteComicsDTO[]> {
+  async getFavorites(
+    params: GetAllFavoriteComicsParams
+  ): Promise<ListFavoriteComicsDTO[]> {
     const { data, error } = await this.supabaseService.supabase
       .from(this.nameTable)
-      .select('*');
+      .select('*')
+      .eq('userId', params.userId);
+
     if (error) {
       throw new Error('Error al obtener los cómics favoritos');
     }
     return data;
+  }
+
+  async existsComicInFavorites({
+    userId,
+    idComic,
+  }: {
+    userId: string;
+    idComic: number;
+  }): Promise<boolean> {
+    const { data, error } = await this.supabaseService.supabase
+      .from(this.nameTable)
+      .select('*')
+      .eq('userId', userId)
+      .eq('idComic', idComic)
+      .maybeSingle();
+
+    if (data) {
+      return true;
+    }
+    return false;
   }
 }
