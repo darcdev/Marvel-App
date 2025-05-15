@@ -8,5 +8,5 @@ export const environment: Environment = {
   marvelUrl: 'https://gateway.marvel.com/v1/public',
   marvelHash: 'f9b345a0fbfaa6a3cc09c13f8b915a85',
   marvelTimestamp: '1747198752',
-  production: false,
+  production: true,
 };
