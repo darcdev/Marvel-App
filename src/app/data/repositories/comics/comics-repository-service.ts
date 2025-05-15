@@ -33,12 +33,12 @@ export class ComicsRepositoryService extends IComicsRepository {
       this._httpClient.get<BaseResponse<ListAllComicsDTO>>(
         getMarvelApiUrl('comics', paramsToString(params))
       )
-    ).then((response) => {
+    ).then(response => {
       return this._listAllComicsMapper.mapTo(response);
     });
   }
   async addComicToFavorites(comic: AddFavoriteComicsDTO) {
-    const { data, error } = await this.supabaseService.supabase
+    const { error } = await this.supabaseService.supabase
       .from(this.nameTable)
       .insert({
         idComic: comic.id,
@@ -53,7 +53,7 @@ export class ComicsRepositoryService extends IComicsRepository {
     }
   }
   async removeComicFromFavorites(comic: RemoveFavoriteComicDTO) {
-    const { data, error } = await this.supabaseService.supabase
+    const { error } = await this.supabaseService.supabase
       .from(this.nameTable)
       .delete()
       .eq('idComic', comic.id)
