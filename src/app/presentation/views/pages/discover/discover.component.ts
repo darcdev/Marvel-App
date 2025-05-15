@@ -10,6 +10,11 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ComicEntity } from '@app/domain/entities/Comic.entity';
 import { GetAllComicsUseCaseService } from '@app/domain/usecases/comics/get-all-comics.service';
 import { StatePagination } from '@app/presentation/models/state/Pagination';
+import { AuthSupabaseService } from '@app/core/services/supabase/auth-supabase.service.service';
+import { UserProfileResponse } from '@app/core/models/auth';
+import { MessageService } from 'primeng/api';
+import { Toast } from 'primeng/toast';
+import { AddComicToFavoriteUseCaseService } from '@app/domain/usecases/comics/add-comic-to-favorite.service copy';
 @Component({
   selector: 'app-discover',
   imports: [
@@ -21,9 +26,11 @@ import { StatePagination } from '@app/presentation/models/state/Pagination';
     FloatLabelModule,
     InputTextModule,
     NgIcon,
+    Toast,
   ],
   templateUrl: './discover.component.html',
   styleUrl: './discover.component.css',
+  providers: [MessageService],
 })
 export class DiscoverComponent implements OnInit {
   first: number = 0;
@@ -38,10 +45,19 @@ export class DiscoverComponent implements OnInit {
     total: 0,
     count: 0,
   };
-
-  constructor(private _getAllComicsUseCase: GetAllComicsUseCaseService) {}
+  user: UserProfileResponse | null = null;
+  constructor(
+    private _getAllComicsUseCase: GetAllComicsUseCaseService,
+    private _addComicToFavoriteUseCase: AddComicToFavoriteUseCaseService,
+    private _authService: AuthSupabaseService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {
+    this._authService.getUser().then((user) => {
+      this.user = user;
+    });
+
     this._getAllComicsUseCase
       .execute({
         offset: 0,
@@ -96,5 +112,28 @@ export class DiscoverComponent implements OnInit {
           };
         });
     }, 300);
+  }
+
+  async onAddToFavorites(comic: ComicEntity): Promise<void> {
+    try {
+      await this._addComicToFavoriteUseCase.execute({
+        ...comic,
+        userId: this.user?.user.data.user?.id ?? '',
+      });
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Success',
+        detail: 'Cómic agregado a favoritos',
+      });
+    } catch (error) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail:
+          error instanceof Error
+            ? error.message
+            : 'Ha ocurrido un error al agregar el cómic a favoritos',
+      });
+    }
   }
 }

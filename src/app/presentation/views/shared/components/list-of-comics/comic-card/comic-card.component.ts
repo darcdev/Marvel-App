@@ -17,7 +17,7 @@ import { NgIcon } from '@ng-icons/core';
 })
 export class ComicCardComponent {
   @Input() comic!: ComicEntity;
-
+  @Input() onHandleFavorite: (params: any) => void = () => {};
   ref: DynamicDialogRef | null = null;
 
   constructor(
@@ -48,11 +48,7 @@ export class ComicCardComponent {
     });
   }
 
-  addToFavorites(comic: ComicEntity): void {
-    this.messageService.add({
-      severity: 'info',
-      summary: 'Favorito',
-      detail: 'Comic agregado a favoritos',
-    });
+  handleFavorite(comic: ComicEntity): void {
+    this.onHandleFavorite(comic);
   }
 }

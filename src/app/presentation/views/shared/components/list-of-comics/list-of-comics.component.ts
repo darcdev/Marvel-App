@@ -15,6 +15,7 @@ import { ComicCardComponent } from './comic-card/comic-card.component';
 })
 export class ListOfComicsComponent implements OnInit {
   @Input() comics: ComicEntity[] = [];
+  @Input() onHandleFavorite: (params: any) => void = () => {};
 
   ngOnInit(): void {}
 }

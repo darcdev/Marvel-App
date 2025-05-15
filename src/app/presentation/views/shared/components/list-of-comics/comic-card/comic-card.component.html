@@ -9,7 +9,7 @@
       type="button"
       class="favorite-button"
       pButton
-      (click)="addToFavorites(comic)"
+      (click)="onHandleFavorite(comic)"
       pTooltip="Agregar a favoritos"
       tooltipPosition="top"
     >
@@ -29,10 +29,11 @@
       </div>
       @if (comic.creators) {
       <div class="comic-creators">
-        <span
-          >Autor:
-          {{ comic.creators.items?.[0]?.name || 'Sin Información' }}</span
-        >
+        @if (comic.creators.items[0].name) {
+        <span>Autor: {{ comic.creators.items[0].name }}</span>
+        } @else {
+        <span>Autor: Sin Información</span>
+        } >
       </div>
       }
     </div>

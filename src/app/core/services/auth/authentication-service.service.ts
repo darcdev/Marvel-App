@@ -45,7 +45,6 @@ export class AuthenticationService extends AuthUserAdapter {
     if (!authResponse.data || authResponse.error) {
       throw new Error('Error creating user');
     } else {
-      console.log(authResponse.data.user!.id);
       await this._userRepository.createUserProfile({
         authUser: authResponse.data.user!.id,
         email: authResponse.data.user!.email!,

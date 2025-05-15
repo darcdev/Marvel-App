@@ -1,15 +1,11 @@
 <div class="user-dashboard-container">
   <section class="section-list-comics">
     <h3 class="section-title">Tus Comics Favoritos</h3>
-    <app-list-of-comics />
-    <div class="mt-4">
-      <p-paginator
-        [first]="first"
-        [rows]="rows"
-        [totalRecords]="120"
-        [rowsPerPageOptions]="[10, 20, 30]"
-        (onPageChange)="onPageChange($event)"
-      />
-    </div>
+    <app-list-of-comics
+      [comics]="comics"
+      [onHandleFavorite]="onRemoveComicFromFavorites.bind(this)"
+    />
+    <div class="mt-4"></div>
   </section>
+  <p-toast />
 </div>

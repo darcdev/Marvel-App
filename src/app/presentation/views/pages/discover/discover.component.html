@@ -30,7 +30,10 @@
     </div>
     }
 
-    <app-list-of-comics [comics]="comics" />
+    <app-list-of-comics
+      [comics]="comics"
+      [onHandleFavorite]="onAddToFavorites.bind(this)"
+    />
     @if (comics.length > 0) {
     <div class="mt-4">
       <p-paginator
@@ -44,4 +47,5 @@
 
     }
   </section>
+  <p-toast />
 </div>

@@ -21,6 +21,7 @@ export class FavoriteComicsState {
     { patchState }: StateContext<FavoriteComicsStateModel>,
     { payload }: SetFavoriteComics
   ) {
+    console.log('payload', payload);
     patchState({
       favoriteComics: [...payload],
     });

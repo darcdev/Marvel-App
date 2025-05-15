@@ -3,6 +3,7 @@
     <app-comic-card
       *ngFor="let comic of comics"
       [comic]="comic"
+      [onHandleFavorite]="onHandleFavorite"
     ></app-comic-card>
   </div>
 </div>
